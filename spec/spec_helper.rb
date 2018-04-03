@@ -15,7 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   ENV['RACK_ENV'] = 'test'
-  require 'app.rb'
+  require './app.rb'
   require 'capybara'
   require 'capybara/rspec'
   Capybara.app = MyApp
