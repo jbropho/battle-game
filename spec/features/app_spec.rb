@@ -1,9 +1,6 @@
 RSpec.feature "Start a new game", :type => :feature do
   before(:each) do
-    visit "/"
-    fill_in "player_one", :with => "Dave"
-    fill_in "player_two", :with => "John"
-    click_button "Submit"
+    sign_in_and_play
   end
 
   scenario "User submits player names" do
