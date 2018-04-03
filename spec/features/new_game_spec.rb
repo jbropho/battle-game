@@ -9,9 +9,9 @@ RSpec.feature "Start a new game", :type => :feature do
   end
 
   scenario "Page has player hitpoints" do
-    player_one = page.find_by_id("playerOnePoints")
-    expect(player_one).to have_text("100")
-    player_two = page.find_by_id("playerTwoPoints")
-    expect(player_two).to have_text("100")
+    p1_health = page.find_by_id("p1Health")
+    expect(p1_health).to have_text("100")
+    p2_health = page.find_by_id("p2Health")
+    expect(p2_health).to have_text("100")
   end
 end
