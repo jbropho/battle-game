@@ -15,11 +15,17 @@ class MyApp < Sinatra::Base
     redirect '/play'
   end
 
+  post '/attack' do
+    session[:message] = params[:playerAction]
+    redirect '/play'
+  end
+
   get '/play' do
     @player_one = session[:player_one]
     @player_two = session[:player_two]
     @p1_health = session[:p1_health]
     @p2_health = session[:p2_health]
+    @message = session[:message]
     erb :play
   end
 end

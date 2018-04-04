@@ -4,9 +4,9 @@ RSpec.feature "Attack a player", :type => :feature do
   end
 
   scenario "playerOne attacks playerTwo" do
-    p1_attack = page.find_by_id("p1_attack")
-    p2_health = page.find_by_id("p2_health")
-    click_button p1_attack
-    expect(p2_health.value).to be < 100
+    # p1_attack = page.find_by_id("p1_attack")
+    p2_health = page.find_by_id("p2Health")
+    find('input[id="p2_attack"]').click
+    expect(page).to have_text("You attacked player1!")
   end
 end
