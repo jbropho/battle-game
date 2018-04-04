@@ -8,17 +8,17 @@
 </head>
   <body>
      <div id="p1">
-       <%= @player_one %>
-       <p id="p1Health"> <%= @p1_health  %> </p>
+       <%= @player_one.name %>
+       <p id="p1Health"> <%= @player_one.health %> </p>
        <form action='/attack' method='POST'>
          <input name="playerAction" value="You attacked player2" type="hidden">
          <input type="submit" value="Attack!" id="p1_attack">
        </form>
      </div>
      <br>
-     <div id="p2">
-       <%= @player_two %>
-       <p id="p2Health"> <%= @p2_health  %></p>
+       <div id="p2">
+       <%= @player_two.name %>
+       <p id="p2Health"> <%= @player_two.health  %></p>
        <form action='/attack' method='POST'>
          <input name="playerAction" value="You attacked player1!" type="hidden">
          <input type="submit" value="Attack!" id="p2_attack">

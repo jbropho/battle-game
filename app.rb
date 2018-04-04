@@ -1,17 +1,16 @@
 require 'sinatra/base'
+require './lib/player'
 
 class MyApp < Sinatra::Base
-  set :sessions, true
+  enable :sessions
 
   get '/' do
     erb(:index)
   end
 
   post '/names' do
-    session[:player_one] = params[:player_one]
-    session[:player_two] = params[:player_two]
-    session[:p1_health] = 100
-    session[:p2_health] = 100
+    session[:player_one] = Player.new(params[:player_one])
+    session[:player_two] = Player.new(params[:player_two])
     redirect '/play'
   end
 
@@ -21,11 +20,9 @@ class MyApp < Sinatra::Base
   end
 
   get '/play' do
+    @message = session[:message]
     @player_one = session[:player_one]
     @player_two = session[:player_two]
-    @p1_health = session[:p1_health]
-    @p2_health = session[:p2_health]
-    @message = session[:message]
     erb :play
   end
 end
