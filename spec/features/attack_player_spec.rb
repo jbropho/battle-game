@@ -1,3 +1,4 @@
+require 'pry'
 RSpec.feature "Attack a player", :type => :feature do
   before(:each) do
     sign_in_and_play
@@ -8,9 +9,11 @@ RSpec.feature "Attack a player", :type => :feature do
     expect(page).to have_text("You attacked player1!")
   end
 
-  scenario "playerTwo looses health when attacked" do
-    p2_health = page.find_by_id("p2Health").text
+  scenario "playerTwo looses 10 health when attacked" do
+    p1_health_before = page.find_by_id("p1Health").text
     attack = find('input[id="p2_attack"]')
-    expect { attack.click }.to change{ p2_health }.from("100").to("90")
+    attack.click
+    p1_health_after = page.find_by_id("p1Health").text
+    expect(p1_health_before.to_i - p1_health_after.to_i).to eq 10
   end
 end

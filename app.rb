@@ -16,6 +16,9 @@ class MyApp < Sinatra::Base
 
   post '/attack' do
     session[:message] = params[:playerAction]
+    @player_one = session[:player_one]
+    @player_two = session[:player_two]
+    eval(params[:playerMove])
     redirect '/play'
   end
 
