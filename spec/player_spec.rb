@@ -2,10 +2,12 @@ require 'player'
 require 'pry'
 
 describe Player do
-  describe '.tested' do
-    subject(:player) { described_class.new('john')}
-    it 'returns a player name' do
-      expect(player.tested).to eq 'john'
+  subject(:player) { described_class.new('Xaero') }
+
+  describe '.receieve_attack' do
+    it 'reduces player health' do
+      attack = double(:damage => 10)
+      expect{ player.receieve_attack(attack)}.to change{player.health}.from(100).to(90)
     end
   end
 end

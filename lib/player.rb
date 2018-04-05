@@ -5,7 +5,7 @@ class Player
     @health = 100
   end
 
-  def tested
-    @name
+  def receieve_attack(attack)
+    @health -= attack.damage
   end
 end
