@@ -1,4 +1,3 @@
-require 'pry'
 RSpec.feature "Attack a player", :type => :feature do
   before(:each) do
     sign_in_and_play
