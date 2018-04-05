@@ -7,7 +7,7 @@ describe Player do
   describe '.receieve_attack' do
     it 'reduces player health' do
       attack = double(:damage => 10)
-      expect{ player.receieve_attack(attack)}.to change{player.health}.from(100).to(90)
+      expect{ player.receive_attack(attack)}.to change{player.health}.from(100).to(90)
     end
   end
 end

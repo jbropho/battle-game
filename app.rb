@@ -10,26 +10,26 @@ class MyApp < Sinatra::Base
   end
 
   post '/names' do
-    session[:player_one] = Player.new(params[:player_one])
-    session[:player_two] = Player.new(params[:player_two])
-    session[:game] = Game.new('place', 'holder')
+    @player1 = Player.new(params[:player_one])
+    @player2 = Player.new(params[:player_two])
+    session[:game] = Game.new(@player1, @player2)
     redirect '/play'
   end
 
   post '/attack' do
     session[:message] = params[:playerAction]
-    @player_one = session[:player_one]
-    @player_two = session[:player_two]
-    $game = session[:game]
+    @game = session[:game]
+    @player_one = @game.player_one
+    @player_two = @game.player_two
     eval(params[:playerMove])
     redirect '/play'
   end
 
   get '/play' do
     @message = session[:message]
-    @player_one = session[:player_one]
-    @player_two = session[:player_two]
     @game = session[:game]
+    @player_one = @game.player_one
+    @player_two = @game.player_two
     erb :play
   end
 end

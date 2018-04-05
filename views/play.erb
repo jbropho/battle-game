@@ -12,7 +12,7 @@
        <p id="p1Health"> <%= @player_one.health %> </p>
        <form action='/attack' method='POST'>
          <input name="playerAction" value="You attacked player2" type="hidden">
-         <input name="playerMove" value="@player_one.attack(@player_two)" type="hidden">
+         <input name="playerMove" value="@game.attack(@player_two)" type="hidden">
          <input type="submit" value="Attack!" id="p1_attack">
        </form>
      </div>
@@ -22,7 +22,7 @@
        <p id="p2Health"> <%= @player_two.health  %></p>
        <form action='/attack' method='POST'>
          <input name="playerAction" value="You attacked player1!" type="hidden">
-         <input name="playerMove" value="@player_two.attack(@player_one)" type="hidden">
+         <input name="playerMove" value="@game.attack(@player_one)" type="hidden">
          <input type="submit" value="Attack!" id="p2_attack">
        </form>
      </div>
