@@ -12,7 +12,7 @@ class MyApp < Sinatra::Base
   post '/names' do
     session[:player_one] = Player.new(params[:player_one])
     session[:player_two] = Player.new(params[:player_two])
-    session[:game] = Game.new
+    session[:game] = Game.new('place', 'holder')
     redirect '/play'
   end
 
