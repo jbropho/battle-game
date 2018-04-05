@@ -1,4 +1,5 @@
 require_relative 'attack'
+require_relative 'game'
 
 class Player
   attr_accessor :name, :health
@@ -8,7 +9,7 @@ class Player
   end
 
   def attack(player)
-    player.receieve_attack(Attack.new)
+    $game.attack(player)
   end
 
   def receieve_attack(attack)

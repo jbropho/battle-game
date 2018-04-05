@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/player'
+require './lib/game'
 
 class MyApp < Sinatra::Base
   enable :sessions
@@ -11,6 +12,7 @@ class MyApp < Sinatra::Base
   post '/names' do
     session[:player_one] = Player.new(params[:player_one])
     session[:player_two] = Player.new(params[:player_two])
+    session[:game] = Game.new
     redirect '/play'
   end
 
@@ -18,6 +20,7 @@ class MyApp < Sinatra::Base
     session[:message] = params[:playerAction]
     @player_one = session[:player_one]
     @player_two = session[:player_two]
+    $game = session[:game]
     eval(params[:playerMove])
     redirect '/play'
   end
@@ -26,6 +29,7 @@ class MyApp < Sinatra::Base
     @message = session[:message]
     @player_one = session[:player_one]
     @player_two = session[:player_two]
+    @game = session[:game]
     erb :play
   end
 end
