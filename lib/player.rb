@@ -1,6 +1,3 @@
-require_relative 'attack'
-require_relative 'game'
-
 class Player
   attr_accessor :name, :health
   def initialize(name)
