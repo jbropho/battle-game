@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require './lib/player'
 require './lib/game'
+require './lib/helpers'
 
 class MyApp < Sinatra::Base
   enable :sessions
@@ -21,7 +22,7 @@ class MyApp < Sinatra::Base
     @game = session[:game]
     @player_one = @game.player_one
     @player_two = @game.player_two
-    eval(params[:playerMove])
+    call_attack(params[:playerMove])
     redirect '/play'
   end
 
