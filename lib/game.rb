@@ -23,7 +23,7 @@ class Game
   end
 
   def game_over?
-     @player_one.health == 0 || @player_two.health == 0
+     @player_one.health <= 0 || @player_two.health <= 0
   end
 
   def print_winner
