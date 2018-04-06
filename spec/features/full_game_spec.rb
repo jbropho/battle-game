@@ -4,6 +4,7 @@ RSpec.feature 'loose a game', :type => :feature do
   end
 
   scenario 'player1 wins a game' do
+    Attack.any_instance.stub(:damage).and_return(10)
     p1_attack = find('input[id="p1_attack"]')
     p2_attack = find('input[id="p2_attack"]')
     9.times do

@@ -8,12 +8,13 @@ RSpec.feature "Attack a player", :type => :feature do
     expect(page).to have_text("You attacked player1!")
   end
 
-  scenario "playerTwo looses 10 health when attacked" do
+  scenario "playerTwo looses health when attacked" do
     p2_health_before = page.find_by_id("p2Health").text
     attack = find('input[id="p1_attack"]')
     attack.click
     p2_health_after = page.find_by_id("p2Health").text
-    expect(p2_health_before.to_i - p2_health_after.to_i).to eq 10
+    difference = p2_health_before.to_i - p2_health_after.to_i
+    expect((0..20)).to include difference
   end
 
   scenario "playerOne attacks two times in a row" do
